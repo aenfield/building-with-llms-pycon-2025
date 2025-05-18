@@ -1,0 +1,16 @@
+[project]
+name = "building-with-llms-pycon-2025"
+version = "0.1.0"
+requires-python = ">=3.13"
+dependencies = [
+    "datasette>=0.65.1",
+    "llm>=0.26a0",
+    "llm-anthropic>=0.16a0",
+    "llm-cmd>=0.2a0",
+    "llm-docs>=0.2.1",
+    "llm-fragments-github>=0.4",
+    "llm-gemini>=0.20a0",
+    "llm-github-models>=0.12",
+    "llm-ollama>=0.10.0",
+    "sqlite-utils>=3.38",
+]
