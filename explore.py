@@ -35,13 +35,28 @@ import llm
 # print(translate_to_spanish("What's the best thing about a pelican?"))
 
 # async support
-import asyncio
+# import asyncio
 
-model = llm.get_async_model('gpt-4.1-mini')
-async def main():
-    response = model.prompt('A funny walrus joke')
-    async for chunk in response:
-        print(chunk, end='', flush=True)
-    # or just print(await response.text())
+# model = llm.get_async_model('gpt-4.1-mini')
+# async def main():
+#     response = model.prompt('A funny walrus joke')
+#     async for chunk in response:
+#         print(chunk, end='', flush=True)
+#     # or just print(await response.text())
 
-asyncio.run(main())
+# asyncio.run(main())
+
+# structured data extraction
+import json
+from pydantic import BaseModel
+
+class Pelican(BaseModel):
+    name: str
+    age: int
+    short_bio: str
+    beak_capacity_ml: float
+
+model = llm.get_model('gpt-4.1-mini')
+response = model.prompt('Describe a spectacular pelican', schema=Pelican)
+pelican = json.loads(response.text())
+print(pelican)
